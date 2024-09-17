@@ -20,9 +20,20 @@ const Page = () => {
     });
   };
 
-  // Handle image file change
+  // Handle image file change with validation for jpg and png
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+
+    // Validate file type
+    if (file && !["image/png", "image/jpeg"].includes(file.type)) {
+      setError("Please upload a valid image file (PNG or JPG).");
+      return;
+    }
+
+    // Clear error if valid image is selected
+    setError(null);
+
+    // Set the image in form state
     setForm({
       ...form,
       image: file,
@@ -41,7 +52,6 @@ const Page = () => {
       if (!form.name || !form.image) {
         throw new Error("Please provide both a name and an image.");
       }
-      console.log(form,"form")
 
       // Call your createPost function (assuming it accepts name and image file)
       const response = await createPost(form);
@@ -64,7 +74,6 @@ const Page = () => {
       <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl">Upload Project</h1>
-          
         </div>
 
         <form
@@ -73,7 +82,7 @@ const Page = () => {
         >
           <div>
             <label htmlFor="name" className="sr-only">
-              Name
+              Title
             </label>
             <input
               type="text"
@@ -81,20 +90,20 @@ const Page = () => {
               value={form.name}
               onChange={handleInputChange}
               className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-              placeholder="Enter your name"
+              placeholder="Enter title"
             />
           </div>
-            
+
           <div>
             <label htmlFor="image" className="text-lg ml-3 text-gray-600">
-              Upload Image
+              Upload Image (PNG or JPG)
             </label>
             <input
               type="file"
               name="image"
               onChange={handleFileChange}
               className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-              accept="image/*"
+              accept=".png,.jpg,.jpeg"
             />
           </div>
 
