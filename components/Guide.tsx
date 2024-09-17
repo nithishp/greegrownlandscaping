@@ -43,7 +43,7 @@ const Guide = () => {
           <div className="flexBetween flex-col">
             <div className="flex w-full flex-col">
               <div className="flexBetween w-full">
-                <p className="regular-16 text-gray-20">Small Project </p>
+                <p className="regular-16 text-gray-20">Small  </p>
                 <p className="bold-16 text-green-50 ml-8">40 min</p>
               </div>
               <p className="bold-20 mt-2">20 Yards</p>
@@ -51,7 +51,7 @@ const Guide = () => {
 
             <div className="flex w-full flex-col">
               <div className="flexBetween w-full">
-                <p className="regular-16 text-gray-20">Large Project </p>
+                <p className="regular-16 text-gray-20">Large  </p>
                 <p className="bold-16 text-green-50 ml-8">3 hrs</p>
               </div>
               <h4 className="bold-20 mt-2 whitespace-nowrap">
