@@ -5,8 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Travel',
-  description: 'Travel UI/UX App for Camping',
+  title: 'Green Grow Landscaping',
+  description: 'Australian Landscaping Company',
 }
 
 export default function RootLayout({
