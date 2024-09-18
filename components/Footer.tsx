@@ -1,5 +1,6 @@
 
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 const Footer = () => {
@@ -17,43 +18,43 @@ const Footer = () => {
 
         <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
           <li>
-            <a
+            <Link
               className="text-gray-700 transition hover:text-gray-700/75"
               href="#"
             >
               {" "}
               Home{" "}
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
+            <Link
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              href="/#features"
             >
               {" "}
               Services{" "}
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
+            <Link
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              href="/projects"
             >
               {" "}
-              Features{" "}
-            </a>
+              Projects{" "}
+            </Link>
           </li>
 
           <li>
-            <a
+            <Link
               className="text-gray-700 transition hover:text-gray-700/75"
               href="#"
             >
               {" "}
               Contact{" "}
-            </a>
+            </Link>
           </li>
 
 

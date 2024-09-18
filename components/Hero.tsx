@@ -1,14 +1,6 @@
 'use client'
 import Image from 'next/image'
 import Button from './Button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 
 const Hero = () => {
@@ -18,11 +10,9 @@ const Hero = () => {
        behavior: "smooth",
      });
   }
+
   return (
-    <section
-      className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row"
-      id="hero"
-    >
+    <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row" id='hero'>
       <div className="hero-map" />
 
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
@@ -59,32 +49,13 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col w-full gap-3 sm:flex-row">
+          <Button type="button" title="Get Started" variant="btn_green" handleClick={handleClick}/>
           <Button
             type="button"
-            title="Get Started"
-            variant="btn_green"
-            handleClick={handleClick}
+            title="How we work?"
+            icon="/play.svg"
+            variant="btn_white_text"
           />
-          <Dialog>
-            <DialogTrigger>
-              <Button
-                type="button"
-                title="How we work?"
-                icon="/play.svg"
-                variant="btn_white_text"
-              />
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>
-                  Take a look into Green Grow Landscaping
-                </DialogTitle>
-                <DialogDescription>
-                  <iframe src="https://www.youtube.com/watch?v=LXb3EKWsInQ" />
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
         </div>
       </div>
 
