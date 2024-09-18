@@ -17,7 +17,7 @@ const Hero = () => {
 
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
         <h1 className="bold-52 lg:bold-88">
-          Transform <span className="text-[#30af5b]">Green</span> Paradise
+          Transform <br /> <span className="text-[#30af5b]">Green</span> Paradise
         </h1>
         <p className="regular-16 mt-6 text-gray-30 xl:max-w-[520px]">
           At Green Grow Landscape, we bring nature’s beauty to your doorstep.
@@ -59,26 +59,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="relative flex flex-1 items-start">
-        <div className="relative z-20 flex w-[268px] flex-col gap-8 rounded-3xl bg-green-90 px-7 py-8">
-          <div className="flex flex-col">
-            <div className="flexBetween">
-              <p className="regular-16 text-gray-20">Location</p>
-            </div>
-            <p className="bold-20 text-white">Sydney</p>
-          </div>
-          <div className="flexBetween">
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Time Taken</p>
-              <p className="bold-20 text-white">3 hrs</p>
-            </div>
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Time Saved</p>
-              <p className="bold-20 text-white">6 hrs</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    
     </section>
   );
 }
