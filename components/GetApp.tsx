@@ -15,7 +15,7 @@ const GetApp = () => {
             <Button
               type="button"
               title="Call Us"
-              icon="/call.svg"
+              icon="/call-bold.svg"
               variant="btn_white"
               full
             />
