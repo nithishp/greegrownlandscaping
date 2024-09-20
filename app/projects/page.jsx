@@ -1,6 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { getPost } from "../../services/GlobalApi";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import ProjectModal from "@/components/ProjectModal";
+import Image from "next/image";
 
 // Skeleton Loader Component
 const Skeleton = () => {
@@ -38,11 +48,18 @@ const Page = () => {
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header className="mb-5">
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-            Previous Projects
-          </h2>
+          <div className="relative">
+            <Image
+              src="/camp.svg"
+              alt="camp"
+              width={50}
+              height={50}
+              className="absolute left-[-5px] top-[-28px] w-10 lg:w-[50px]"
+            />
+            <h2 className="bold-40 lg:bold-64">Our Services</h2>
+          </div>
 
-          <p className="mt-4 max-w-md text-gray-500">
+          <p className="mt-4 regular-18 max-w-md text-gray-30">
             Not sure about our ability? Take a look at our previous projects to
             get to know us more!
           </p>
@@ -65,19 +82,38 @@ const Page = () => {
                 ))
             ) : projects.length > 0 ? (
               projects.map((project) => (
-                <li key={project.$id}>
-                  <div
-                    style={{
-                      backgroundImage: `url(${project.image})`,
-                      backgroundPosition: "center",
-                    }}
-                    className="outline-card flex aspect-square w-full flex-col justify-end overflow-hidden rounded-lg bg-neutral-400 shadow-xl shadow-neutral-900/30 transition-[background-size] bg-no-repeat bg-cover duration-500"
-                  >
-                    <div className="pointer-events-none flex items-center justify-between bg-gradient-to-t from-black to-black/0 p-6 pt-8 text-xl font-medium text-white md:text-2xl">
-                      <h3>{project.title}</h3>
-                    </div>
-                  </div>
-                </li>
+                <Dialog >
+                  <DialogTrigger asChild>
+                    <li key={project.$id} className="cursor-pointer">
+                      <div
+                        style={{
+                          backgroundImage: `url(${project.image})`,
+                          backgroundPosition: "center",
+                        }}
+                        className="outline-card flex aspect-square w-full flex-col justify-end overflow-hidden rounded-lg bg-neutral-400 shadow-xl shadow-neutral-900/30 transition-[background-size] bg-no-repeat bg-cover duration-500"
+                      >
+                        <div className="pointer-events-none flex flex-col items-start justify-between bg-gradient-to-t from-black to-black/0 p-6 pt-8 text-xl font-medium text-white md:text-2xl">
+                          <h3 className="text-left bold-20 lg:bold-32">
+                            {project.title}
+                          </h3>
+                          <h6 className="regular-16 text-neutral-200 text-left mt-1 md:mt-2 line-clamp-1">
+                            {project.excerpt}
+                          </h6>
+                        </div>
+                      </div>
+                    </li>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle className=" bold-20 mb-3">
+                        Take a closer look!!
+                      </DialogTitle>
+                      <DialogDescription>
+                        <ProjectModal project={project} />
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               ))
             ) : (
               <li>No projects found</li>

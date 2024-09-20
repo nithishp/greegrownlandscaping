@@ -6,6 +6,7 @@ const Page = () => {
   const [form, setForm] = useState({
     name: "",
     image: null,
+    excerpt: "", // Add excerpt field to the form state
   });
   const [uploading, setUploading] = useState(false); // Loading state
   const [error, setError] = useState(null); // Error state
@@ -49,16 +50,16 @@ const Page = () => {
 
     try {
       // Perform validation
-      if (!form.name || !form.image) {
-        throw new Error("Please provide both a name and an image.");
+      if (!form.name || !form.image || !form.excerpt) {
+        throw new Error("Please provide a name, image, and excerpt.");
       }
 
-      // Call your createPost function (assuming it accepts name and image file)
+      // Call your createPost function (assuming it accepts name, image file, and excerpt)
       const response = await createPost(form);
 
       if (response.success) {
         setSuccess("Post created successfully!");
-        setForm({ name: "", image: null }); // Reset form
+        setForm({ name: "", image: null, excerpt: "" }); // Reset form
       } else {
         throw new Error(response.message || "Failed to create post.");
       }
@@ -91,6 +92,20 @@ const Page = () => {
               onChange={handleInputChange}
               className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
               placeholder="Enter title"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="excerpt" className="sr-only">
+              Excerpt
+            </label>
+            <input
+              type="text"
+              name="excerpt"
+              value={form.excerpt}
+              onChange={handleInputChange}
+              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+              placeholder="Enter short description (excerpt)"
             />
           </div>
 

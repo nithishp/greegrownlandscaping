@@ -61,6 +61,7 @@ export async function createPost(post) {
       {
         title: post.name,
         image: fileUrl,
+        excerpt: post.excerpt
       }
     );
 
