@@ -14,14 +14,14 @@ const GetApp = () => {
           <div className="flex w-full flex-col gap-3 whitespace-nowrap xl:flex-row">
             <Button
               type="button"
-              title="Call Us"
+              title="Call us"
               icon="/call-bold.svg"
               variant="btn_white"
               full
             />
             <Button
               type="button"
-              title="Mail Us"
+              title="E-mail us"
               icon="/mail.svg"
               variant="btn_dark_green_outline"
               full
