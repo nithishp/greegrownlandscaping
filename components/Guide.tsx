@@ -13,7 +13,7 @@ const Guide = () => {
           <h2 className="bold-40 lg:bold-64 xl:max-w-[390px]">
             Nature Meets Imagination
           </h2>
-          <p className="regular-16 text-right text-gray-30 xl:max-w-[520px]">
+          <p className="regular-16 xl:text-right text-gray-30 xl:max-w-[520px]">
             From the first sketch to the final plant, we’ll guide you through
             every step of the process. With a keen eye for detail and a passion
             for perfection, our team is dedicated to creating spaces that
