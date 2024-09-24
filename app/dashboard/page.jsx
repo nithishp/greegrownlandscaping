@@ -40,8 +40,6 @@ import {
 } from "@/components/ui/tooltip";
 import { useEffect, useState } from "react";
 import { deletePostById, getPost } from "../../services/GlobalApi";
-export const description =
-  "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions.";
 
 const Dashboard =()=> {
       const [projects, setProjects] = useState([]);
@@ -89,7 +87,7 @@ const Dashboard =()=> {
               <CardHeader className="flex flex-row justify-between">
                 <div>
                   <CardTitle>Projects</CardTitle>
-                  <CardDescription>Manage your Projects here.</CardDescription>
+                  <CardDescription>View and manage your projects here.</CardDescription>
                 </div>
                 <Link href="/admin">
                   <Button className="gap-3 bg-[#30af5b] hover:bg-[#248143]">
