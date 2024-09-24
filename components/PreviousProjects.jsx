@@ -74,9 +74,7 @@ const Skeleton = () => {
                   ))
               ) : projects.length > 0 ? (
                 projects.map((project) => (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <li key={project.$id} className="cursor-pointer">
+                      <li key={project.$id} >
                         <div
                           style={{
                             backgroundImage: `url(${project.image})`,
@@ -94,18 +92,6 @@ const Skeleton = () => {
                           </div>
                         </div>
                       </li>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle className=" bold-20 mb-3">
-                          Take a closer look!!
-                        </DialogTitle>
-                        <DialogDescription>
-                          <ProjectModal project={project} />
-                        </DialogDescription>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
                 ))
               ) : (
                 <li>No projects found</li>
