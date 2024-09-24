@@ -7,7 +7,7 @@ const Services = () => {
         <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
           <div>
             <h2 className="bold-40 lg:bold-64 text-center">Our Services</h2>
-            <p className="max-w-3xl mx-auto mt-4 text-xl text-center ">
+            <p className="max-w-3xl mx-auto  text-xl text-center uppercase regular-18 -mt-1 mb-3 text-green-50 ">
               What we offer to our clients
             </p>
           </div>

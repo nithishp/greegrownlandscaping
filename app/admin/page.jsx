@@ -1,6 +1,7 @@
 "use client";
 import { createPost } from "@/services/GlobalApi";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -58,12 +59,16 @@ const Page = () => {
       const response = await createPost(form);
 
       if (response.success) {
+        toast.success("Project added successfully!");
+
         setSuccess("Post created successfully!");
+        
         setForm({ name: "", image: null, excerpt: "" }); // Reset form
       } else {
         throw new Error(response.message || "Failed to create post.");
       }
     } catch (err) {
+      toast.error("Failed to add project. Please try again.");
       setError(err.message);
     } finally {
       setUploading(false);
@@ -132,7 +137,6 @@ const Page = () => {
 
           {/* Show error or success messages */}
           {error && <p className="mt-4 text-red-500">{error}</p>}
-          {success && <p className="mt-4 text-green-500">{success}</p>}
         </form>
       </div>
 

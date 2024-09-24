@@ -117,3 +117,37 @@ export function getFilePreview(fileId) {
     return null;
   }
 }
+
+const extractFileIdFromUrl = (url) => {
+  const regex = /files\/([a-zA-Z0-9]+)\//;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+};
+
+export async function deletePostById(projectId, imageUrl) {
+  try {
+    // Delete the document (post)
+    const result = await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.collectionId,
+      projectId
+    );
+    console.log("Post deleted", result);
+
+    // Extract file ID from image URL
+    const fileId = extractFileIdFromUrl(imageUrl);
+
+    if (fileId) {
+      // Delete the image from storage
+      const deleteFileResult = await storage.deleteFile(
+        appwriteConfig.storageId, // Make sure this is the correct bucket ID
+        fileId
+      );
+      console.log("Image deleted", deleteFileResult);
+    } else {
+      console.log("No valid file ID found in the image URL.");
+    }
+  } catch (error) {
+    console.log("Error deleting post or image:", error);
+  }
+}
