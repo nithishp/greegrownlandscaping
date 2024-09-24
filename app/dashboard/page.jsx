@@ -135,7 +135,7 @@ const Dashboard =()=> {
                             width="64"
                           />
                         </TableCell>
-                        <TableCell className="font-medium">
+                        <TableCell className="font-medium truncate">
                           {project.title}
                         </TableCell>
                         <TableCell>{project.excerpt}</TableCell>

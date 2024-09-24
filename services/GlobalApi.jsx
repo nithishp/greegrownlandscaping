@@ -1,4 +1,4 @@
-import { Client, Account, Databases, Storage, Avatars,ID } from "appwrite";
+import { Client, Account, Databases, Storage, Avatars,ID, Query } from "appwrite";
 
 export const appwriteConfig = {
   url: process.env.NEXT_PUBLIC_APPWRITE_URL,
@@ -30,6 +30,22 @@ export async function getPost() {
     return posts;
   } catch (error) {
     console.log(error);
+  }
+}
+export async function getLimitPost() {
+  try {
+    // Passing the limit as an option directly to listDocuments
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.collectionId,
+      [Query.limit(3)]
+    );
+
+    if (!posts) throw new Error("No posts found");
+    console.log(posts);
+    return posts;
+  } catch (error) {
+    console.error("Error fetching limited posts:", error);
   }
 }
 
