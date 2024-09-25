@@ -56,7 +56,7 @@ const Page = () => {
               height={50}
               className="absolute left-[-5px] top-[-28px] w-10 lg:w-[50px]"
             />
-            <h2 className="bold-40 lg:bold-64">Our Services</h2>
+            <h2 className="bold-40 lg:bold-64">Our Projects</h2>
           </div>
 
           <p className="mt-4 regular-18 max-w-md text-gray-30">
