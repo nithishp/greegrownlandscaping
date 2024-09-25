@@ -167,3 +167,69 @@ export async function deletePostById(projectId, imageUrl) {
     console.log("Error deleting post or image:", error);
   }
 }
+export async function getProjectById(projectId) {
+  try {
+    const project = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.collectionId,
+      projectId
+    );
+    return project;
+  } catch (error) {
+    console.error("Error fetching project:", error);
+    throw new Error("Could not retrieve project");
+  }
+}
+
+export async function deleteFile(fileId) {
+  try {
+    await storage.deleteFile(appwriteConfig.storageId, fileId);
+    console.log("File deleted successfully");
+  } catch (error) {
+    console.error("Error deleting file:", error);
+    throw new Error("Failed to delete file");
+  }
+}
+// Update existing project
+export async function updateProject(projectId, updatedPost) {
+  try {
+    let fileUrl = updatedPost.image; // Assume the image URL is provided initially
+
+    // If a new image is provided as a File, upload it
+    if (updatedPost.image instanceof File) {
+      // Upload the new image
+      const uploadedFile = await uploadFile(updatedPost.image);
+      if (!uploadedFile) {
+        throw new Error("File upload failed.");
+      }
+
+      // Get the URL for the new uploaded image
+      fileUrl = getFilePreview(uploadedFile.$id);
+
+      // Delete the old image if an image URL was previously provided
+      if (updatedPost.previousImageUrl) {
+        const oldFileId = extractFileIdFromUrl(updatedPost.previousImageUrl);
+        if (oldFileId) {
+          await deleteFile(oldFileId); // Delete the old image from Appwrite storage
+        }
+      }
+    }
+
+    // Update the document with the new title, description, and image URL
+    const updatedProject = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.collectionId,
+      projectId,
+      {
+        title: updatedPost.title,
+        image: fileUrl,
+        excerpt: updatedPost.excerpt,
+      }
+    );
+
+    return { success: true, updatedProject };
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return { success: false, message: error.message };
+  }
+}

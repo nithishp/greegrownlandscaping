@@ -2,8 +2,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import {
  
   MoreHorizontal,
+  Pencil,
   PlusCircle,
   Trash2Icon,
 
@@ -21,7 +41,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-
+import EditProject from "@/components/EditProject";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Table,
@@ -87,7 +107,9 @@ const Dashboard =()=> {
               <CardHeader className="flex flex-row justify-between">
                 <div>
                   <CardTitle>Projects</CardTitle>
-                  <CardDescription>View and manage your projects here.</CardDescription>
+                  <CardDescription>
+                    View and manage your projects here.
+                  </CardDescription>
                 </div>
                 <Link href="/admin">
                   <Button className="gap-3 bg-[#30af5b] hover:bg-[#248143]">
@@ -107,6 +129,12 @@ const Dashboard =()=> {
                       <TableHead>Description</TableHead>
                       <TableHead className="hidden md:table-cell">
                         Created at
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Edit
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Delete
                       </TableHead>
                       <TableHead>
                         <span className="sr-only">Actions</span>
@@ -151,8 +179,26 @@ const Dashboard =()=> {
                             }
                           )}
                         </TableCell>
-
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
+                          <Dialog>
+                            <DialogTrigger>
+                              <Button className="bg-neutral-100 hover:bg-neutral-300 gap-3 text-sm text-gray-700">
+                                {" "}
+                                <Pencil className="p-1" /> Edit
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent>
+                              <DialogHeader>
+                                <DialogTitle>Edit Project</DialogTitle>
+                                <DialogDescription>
+                                  Edit the project details and images here.
+                                </DialogDescription>
+                              </DialogHeader>
+                              <EditProject projectId={project.$id} />
+                            </DialogContent>
+                          </Dialog>
+                        </TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Button
                             onClick={() =>
                               handleDelete(project.$id, project.image)
@@ -160,7 +206,7 @@ const Dashboard =()=> {
                             className="bg-red-400 hover:bg-red-500 gap-3 text-sm"
                           >
                             {" "}
-                            <Trash2Icon /> Delete
+                            <Trash2Icon className="" /> Delete
                           </Button>
                         </TableCell>
                       </TableRow>
