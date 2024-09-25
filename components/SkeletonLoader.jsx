@@ -1,15 +1,13 @@
 // SkeletonLoader.jsx
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const SkeletonLoader = () => {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
-      </div>
+    <div className="animate-pulse">
+      <div className="h-6 bg-gray-300 rounded mb-4"></div>
+      <div className="h-12 bg-gray-300 rounded mb-4"></div>
+   
+      <div className="h-52 bg-gray-300 rounded mb-4"></div>
     </div>
   );
 };
