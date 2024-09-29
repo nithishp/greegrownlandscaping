@@ -9,11 +9,11 @@ const Guide = () => {
         <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
           Your Vision, Our Expertise
         </p>
-        <div className="flex flex-wrap justify-between gap-5 lg:gap-10">
-          <h2 className="bold-40 lg:bold-64 xl:max-w-[390px]">
+        <div className="flex flex-col">
+          <h2 className="bold-40 lg:bold-64 ">
             Nature Meets Imagination
           </h2>
-          <p className="regular-16 xl:text-right text-gray-30 xl:max-w-[520px]">
+          <p className="regular-16 xl:text-left text-gray-30 xl:max-w-[520px]">
             From the first sketch to the final plant, we’ll guide you through
             every step of the process. With a keen eye for detail and a passion
             for perfection, our team is dedicated to creating spaces that

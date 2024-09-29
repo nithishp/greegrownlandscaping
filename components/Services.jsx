@@ -1,6 +1,76 @@
+'use client'
 import Image from "next/image";
+import VerticalSlideFeatures from "./VerticalSlideFeature";
 
 const Services = () => {
+const FEATURES1 = [
+  {
+    title: "Decking",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66e97c69000b317e4d5b/files/66f624760005c9175cef/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Elevate your outdoor living space with our beautifully crafted decks, perfect for relaxation and entertainment. Our expert team designs and builds durable decks with Eco and timber that complement your home's architecture. Choose from various materials and styles to suit your taste and budget.",
+  },
+  {
+    title: "Retaining Walls",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66e97c69000b317e4d5b/files/66f6247c003e6408838a/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Our retaining wall solutions such as Rendered Retaining Walls and Split Space are engineered to withstand environmental elements while enhancing your landscape's aesthetic appeal. We construct walls using various materials, from timber to concrete, to address erosion and create usable space. Our experts ensure stability, durability, and visual appeal.",
+  },
+  {
+    title: "Wall Paneling",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f851c000355b4cd98e/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Transform your outdoor spaces with our stunning wall paneling solutions, adding texture and visual interest. Our panels are crafted from high-quality materials, ensuring durability and low maintenance. Enhance your landscape's beauty with our expert installation services.",
+  },
+];
+const FEATURES2 = [
+  {
+    title: "Concrete",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f851df002e0d1ad641/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Enhance your outdoor space with our professionally laid concrete, perfect for driveways, patios, and walkways. Our team delivers durable, long-lasting concrete solutions that withstand heavy use. Choose from various finishes and styles to match your landscape design.",
+  },
+  {
+    title: "Driveways",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f786fa002a0f79f77c/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Create a lasting impression with our beautifully crafted driveways, combining functionality and aesthetic appeal. Our experts lay concrete or other materials to ensure durability and visual impact. Enhance your home's curb appeal with our custom driveway solutions.",
+  },
+];
+const FEATURES3 = [
+  {
+    title: "Synthetic Grass",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f7870d00091e20e98f/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Enjoy lush, low-maintenance lawns with our premium synthetic grass solutions, perfect for families and pets.Our synthetic turf is durable, eco-friendly, and resistant to weather conditions. Transform your outdoor space into a vibrant, hassle-free zone.",
+  },
+  {
+    title: "Irrigation for Lawns and Garden",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f7876b0002b95db37e/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Optimize water usage and nurture your landscape with our efficient irrigation systems, designed for lawns and gardens. Our experts install and maintain systems ensuring healthy plant growth and water conservation. Automate your watering needs with our innovative solutions.",
+  },
+];
+const FEATURES4 = [
+  {
+    title: "Garden Lights",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66e97c69000b317e4d5b/files/66f624760005c9175cef/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Illuminate your landscape's beauty with our expertly designed garden lighting solutions, highlighting key features and ambiance. Our energy-efficient options enhance safety, visibility, and aesthetic appeal. Choose from various styles and designs to match your landscape.",
+  },
+  {
+    title: "Water Feature and Waterfalls",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66e97c69000b317e4d5b/files/66f6247c003e6408838a/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Create serene, breathtaking spaces with our custom water features and waterfalls, adding visual and auditory charm. Our experts design and install unique, low-maintenance solutions that enhance your landscape's tranquility. Transform your outdoor space into a relaxing oasis",
+  },
+  
+];
+const FEATURES5 = [
+  {
+    title: "Color Bond Fencing",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f787350023a5a698f7/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Color Bond Fencing provides a sleek, durable, and modern fencing solution for your property. Available in a variety of colors, it offers excellent resistance to weather conditions and corrosion, ensuring privacy, security, and low maintenance.",
+  },
+  {
+    title: "Louvered Fencing",
+    url: "https://cloud.appwrite.io/v1/storage/buckets/66f786c6000a3554aa84/files/66f853b30004c0323a3b/view?project=66e977dc0033bd164c43&project=66e977dc0033bd164c43&mode=admin",
+    text: "Louvered Fencing combines privacy with airflow and light, making it ideal for gardens, patios, and pool areas. The slat design allows for a contemporary look while maintaining a sense of openness and comfort. Fully customizable to match your style.",
+  },
+];
+
+
   return (
     <div>
       <section className="">
@@ -14,391 +84,54 @@ const Services = () => {
 
           {/* feature-1 */}
 
-          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+          <div className="">
             <div>
               <h3 className="bold-20 lg:bold-32 ">Outdoor Structures</h3>
-              <p className="mt-3 text-lg text-gray-50 ">
+              <p className="mt-3 text-lg text-gray-50 max-w-lg ">
                 Enhance the functionality and aesthetic appeal of your outdoor
                 space with our expertly crafted outdoor structures.
               </p>
-              <div className="mt-12 space-y-12">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-7 h-7"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium leadi bold-20 ">
-                      Decking
-                    </h4>
-                    <p className="mt-2 regular-16 text-gray-30 ">
-                      Elevate your outdoor living space with our beautifully
-                      crafted decks, perfect for relaxation and entertainment.
-                      Our expert team designs and builds durable decks that
-                      complement your home's architecture. Choose from various
-                      materials and styles to suit your taste and budget.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-7 h-7"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="bold-20 leadi bold-20 ">Retaining Walls</h4>
-                    <p className="mt-2 regular-16 text-gray-30 ">
-                      Our retaining wall solutions are engineered to withstand
-                      environmental elements while enhancing your landscape's
-                      aesthetic appeal. We construct walls using various
-                      materials, from timber to concrete, to address erosion and
-                      create usable space. Our experts ensure stability,
-                      durability, and visual appeal.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-7 h-7"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium leadi bold-20 ">
-                      Wall Paneling
-                    </h4>
-                    <p className="mt-2 regular-16 text-gray-30 ">
-                      Transform your outdoor spaces with our stunning wall
-                      paneling solutions, adding texture and visual interest.
-                      Our panels are crafted from high-quality materials,
-                      ensuring durability and low maintenance. Enhance your
-                      landscape's beauty with our expert installation services.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div aria-hidden="true" className="mt-10 lg:mt-0">
-              <Image
-                height={500}
-                width={800}
-                src="/section-1.jpg"
-                alt=""
-                className="mx-auto rounded-lg shadow-lg bg-gray-500 object-bottom object-cover"
-              />
+              <VerticalSlideFeatures features={FEATURES1} />
             </div>
           </div>
 
           {/* feature-2 */}
-
-          <div>
-            <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-              <div className="lg:col-start-2">
-                <h3 className="text-2xl font-bold tracki sm:text-3xl ">
-                  Hardscapes
-                </h3>
-                <p className="mt-3 text-lg text-gray-50 ">
-                  Transform your outdoor environment with our hardscape
-                  services, designed to provide both beauty and durability.
-                </p>
-                <div className="mt-12 space-y-12">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-7 h-7"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="text-lg font-medium leadi bold-20 ">
-                        Concrete
-                      </h4>
-                      <p className="mt-2 regular-16 text-gray-30 ">
-                        Enhance your outdoor space with our professionally laid
-                        concrete, perfect for driveways, patios, and walkways.
-                        Our team delivers durable, long-lasting concrete
-                        solutions that withstand heavy use. Choose from various
-                        finishes and styles to match your landscape design.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-7 h-7"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="text-lg font-medium leadi bold-20 ">
-                        Driveways
-                      </h4>
-                      <p className="mt-2 regular-16 text-gray-30 ">
-                        Create a lasting impression with our beautifully crafted
-                        driveways, combining functionality and aesthetic appeal.
-                        Our experts lay concrete or other materials to ensure
-                        durability and visual impact. Enhance your home's curb
-                        appeal with our custom driveway solutions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-                <Image
-                  height={500}
-                  width={800}
-                  src="/section-2.jpg"
-                  alt=""
-                  className="mx-auto rounded-lg shadow-lg bg-gray-500 object-top object-cover"
-                />
-              </div>
+          <div className="">
+            <div>
+              <h3 className="bold-20 lg:bold-32 ">Hardscapes</h3>
+              <p className="mt-3 text-lg text-gray-50 max-w-lg ">
+                Transform your outdoor environment with our hardscape services,
+                designed to provide both beauty and durability.
+              </p>
+              <VerticalSlideFeatures features={FEATURES2} />
             </div>
           </div>
+
           {/* feature-3 */}
 
-          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+          <div className="">
             <div>
-              <h3 className="text-2xl font-bold tracki sm:text-3xl ">
-                Lawn and Garden Solutions
-              </h3>
-              <p className="mt-3 text-lg text-gray-50 ">
-                Achieve a vibrant, low-maintenance landscape with our lawn and
-                garden services.
+              <h3 className="bold-20 lg:bold-32 ">Lawn and Garden Solutions</h3>
+              <p className="mt-3 text-lg text-gray-50 max-w-lg ">
+                Want to take your lawn and garden to the next level? We offer a range of solutions to enhance your outdoor space.
               </p>
-              <div className="mt-12 space-y-12">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-7 h-7"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium leadi bold-20 ">
-                      Synthetic Grass
-                    </h4>
-                    <p className="mt-2 regular-16 text-gray-30 ">
-                      Enjoy lush, low-maintenance lawns with our premium
-                      synthetic grass solutions, perfect for families and
-                      pets.Our synthetic turf is durable, eco-friendly, and
-                      resistant to weather conditions. Transform your outdoor
-                      space into a vibrant, hassle-free zone.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        className="w-7 h-7"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-medium leadi bold-20 ">
-                      Irrigation for Lawns and Garden
-                    </h4>
-                    <p className="mt-2 regular-16 text-gray-30 ">
-                      Optimize water usage and nurture your landscape with our
-                      efficient irrigation systems, designed for lawns and
-                      gardens. Our experts install and maintain systems ensuring
-                      healthy plant growth and water conservation. Automate your
-                      watering needs with our innovative solutions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div aria-hidden="true" className="mt-10 lg:mt-0">
-              <Image
-                height={500}
-                width={800}
-                src="section-3.jpg"
-                alt=""
-                className="mx-auto rounded-lg shadow-lg bg-gray-500 object-top object-cover"
-              />
+              <VerticalSlideFeatures features={FEATURES3} />
             </div>
           </div>
-          {/* feature-4  */}
 
-          <div>
-            <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-              <div className="lg:col-start-2">
-                <h3 className="text-2xl font-bold tracki sm:text-3xl ">
-                  Lighting and Water Features
-                </h3>
-                <p className="mt-3 text-lg text-gray-50 ">
-                  Add a touch of elegance and serenity to your landscape with
-                  our custom lighting and water features.
-                </p>
-                <div className="mt-12 space-y-12">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-7 h-7"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="text-lg font-medium leadi bold-20 ">
-                        Garden Lights
-                      </h4>
-                      <p className="mt-2 regular-16 text-gray-30 ">
-                        Illuminate your landscape's beauty with our expertly
-                        designed garden lighting solutions, highlighting key
-                        features and ambiance. Our energy-efficient options
-                        enhance safety, visibility, and aesthetic appeal. Choose
-                        from various styles and designs to match your landscape.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-md bg-[#30af5b] text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-7 h-7"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="text-lg font-medium leadi bold-20 ">
-                        Water Feature and Waterfalls
-                      </h4>
-                      <p className="mt-2 regular-16 text-gray-30 ">
-                        Create serene, breathtaking spaces with our custom water
-                        features and waterfalls, adding visual and auditory
-                        charm. Our experts design and install unique,
-                        low-maintenance solutions that enhance your landscape's
-                        tranquility. Transform your outdoor space into a
-                        relaxing oasis
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-                <Image
-                  height={500}
-                  width={800}
-                  src="/section-4.jpg"
-                  alt=""
-                  className="mx-auto rounded-lg shadow-lg bg-gray-500 object-top object-cover"
-                />
-              </div>
+          {/* feature-5  */}
+          <div className="">
+            <div>
+              <h3 className="bold-20 lg:bold-32 ">
+                Fencing
+              </h3>
+              <p className="mt-3 text-lg text-gray-50 max-w-lg ">
+                Secure your property and enhance its privacy with our fencing solutions, available in various styles and materials.
+              </p>
+              <VerticalSlideFeatures features={FEATURES5} />
             </div>
           </div>
+
         </div>
       </section>
     </div>

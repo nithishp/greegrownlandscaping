@@ -95,7 +95,7 @@ const Skeleton = () => {
                         </div>
                       </li>
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="h-[80vh]">
                       <DialogHeader>
                         <DialogTitle className=" bold-20 mb-3">
                           Take a closer look!!

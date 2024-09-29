@@ -23,7 +23,7 @@ const [hovering, setHovering] = useState(false);
             <img
               src={project.image}
               alt={project.title}
-              className={`block object-cover object-center w-full rounded-md h-72 transition-opacity duration-300 ${
+              className={`block object-cover object-center w-full rounded-md h-96 xl:h-[500px] transition-opacity duration-300 ${
                 imageLoaded ? "opacity-100" : "opacity-0"
               }`}
               onLoad={handleImageLoad} // Image load handler

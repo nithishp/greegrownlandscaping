@@ -5,6 +5,7 @@ import Guide from "@/components/Guide";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import PreviousProjects from "@/components/PreviousProjects";
+import VerticalSlideFeatures from "@/components/VerticalSlideFeature";
 
 export default function Home() {
   return (
@@ -12,10 +13,12 @@ export default function Home() {
       <Hero />
       <Camp />
       <Guide />
-      <Services/>
-      <PreviousProjects/>
+      <Services />
+      <VerticalSlideFeatures />
+      <PreviousProjects />
+
       {/* <Features /> */}
       <GetApp />
     </>
-  )
+  );
 }
