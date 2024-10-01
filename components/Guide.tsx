@@ -32,7 +32,7 @@ const Guide = () => {
           className="w-full object-cover object-center 2xl:rounded-5xl"
         />
 
-        <div className="absolute flex bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20">
+        <div className="absolute flex bg-white/90 md:bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%]  lg:top-20">
           <Image
             src="/meter.svg"
             alt="meter"
@@ -44,15 +44,15 @@ const Guide = () => {
             <div className="flex w-full flex-col">
               <div className="flexBetween w-full">
                 <p className="regular-16 text-gray-20">Small  </p>
-                <p className="bold-16 text-green-50 ml-8">40 min</p>
+                <p className="bold-16 text-green-50 ml-8">1 day</p>
               </div>
-              <p className="bold-20 mt-2">20 Yards</p>
+              <p className="bold-20 mt-2">10 Yards</p>
             </div>
 
             <div className="flex w-full flex-col">
               <div className="flexBetween w-full">
                 <p className="regular-16 text-gray-20">Large  </p>
-                <p className="bold-16 text-green-50 ml-8">3 hrs</p>
+                <p className="bold-16 text-green-50 ml-8">3 weeks</p>
               </div>
               <h4 className="bold-20 mt-2 whitespace-nowrap">
                 &#62; 100 yards
