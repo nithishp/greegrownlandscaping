@@ -9,6 +9,7 @@ const Hero1 = () => {
 <section
   className="relative bg-[url(/herobgimage.png)] bg-cover bg-center bg-no-repeat"
 >
+  
   <div
     className="absolute inset-0 bg-gray-900/75  "
   ></div>
@@ -46,7 +47,7 @@ const Hero1 = () => {
         </div>
 
         <div className="flex flex-col w-full gap-3 sm:flex-row">
-          <Button type="button" title="Get Started" variant="btn_green" />
+          <Button type="button" title="Get Started" variant="btn_green hover:bg-green-700 duration-300" />
           <Button
             type="button"
             title="How we work?"
