@@ -17,7 +17,11 @@ const Hero1 = () => {
   <div
     className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
   >
-    <div className="max-w-xl text-center sm:text-left ">
+    <div className="max-w-xl text-center md:text-left ">
+    <div className='flex flex-col lg:flex-row items-center lg:items-end gap-3 '>
+    <img src='/logo-symbol.png' className='aspect-auto h-20'/>
+    <h2 className='font-semibold text-white text-xl'>Green <span className='text-[#94c019]'>Grow</span>  <span className='text-[#bb9200]'>Landscape</span></h2>
+    </div>
     <h1 className="bold-52 lg:bold-88 text-white">
           Transform <br /> <span className="text-[#30af5b]">Green</span> Paradise
         </h1>

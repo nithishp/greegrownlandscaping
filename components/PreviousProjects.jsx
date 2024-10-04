@@ -35,9 +35,9 @@ const PreviousProjects = () => {
       setLoading(false); // Set loading to false after fetching data
     }
   };
-const Skeleton = () => {
+const Skeleton = ({count}) => {
   return (
-    <div className="animate-pulse bg-gray-300 rounded-lg h-64 w-full"></div>
+    <div className={`animate-pulse bg-gray-300 rounded-lg h-64 w-full delay-${count}00`}></div>
   );
 };
   // Fetch projects on component mount
@@ -69,7 +69,7 @@ const Skeleton = () => {
                   .fill(0)
                   .map((_, index) => (
                     <li key={index}>
-                      <Skeleton />
+                      <Skeleton count={index} />
                     </li>
                   ))
               ) : projects.length > 0 ? (

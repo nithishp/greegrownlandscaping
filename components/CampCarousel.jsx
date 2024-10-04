@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import Image from "next/image";
+import { InView } from '@/components/core/in-view';
 import {
   Carousel,
   CarouselContent,
@@ -36,7 +37,7 @@ const CampCarousel = () => {
     {
       title: "Hardscapes",
       description: "Transform your outdoor environment with our hardscape services, designed to provide both beauty and durability.",
-      titleLeft:false,
+      titleLeft:true,
       features: [
         {
           title: "Concrete",
@@ -70,7 +71,7 @@ const CampCarousel = () => {
     {
       title: "Fencing",
       description: "Secure your property and enhance its privacy with our fencing solutions, available in various styles and materials.",
-      titleLeft:false,
+      titleLeft:true,
       features: [
         {
           title: "Color Bond Fencing",
@@ -97,13 +98,22 @@ const CampCarousel = () => {
       </div>
 
       {FEATURE_GROUPS.map((group, groupIndex) => (
-        <div key={groupIndex}>
-          <div className={`mb-5 lg:bg-green-50 rounded-2xl self-center lg:w-max p-5 lg:-mb-10 lg:ml-14 z-10`}>
+        <div key={groupIndex} className="lg:my-10">
+          <InView
+          variants={{
+            hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
+            visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+          }}
+          viewOptions={{ margin: '0px 0px -200px 0px' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+          <div className={`mb-5 lg:bg-green-50 rounded-t-2xl self-center lg:w-max p-5 lg:-mb-3 lg:ml-14 z-10`}>
             <h3 className="bold-20 lg:bold-32 lg:text-white">{group.title}</h3>
-            <p className="regular-16 xl:text-left text-gray-30 lg:text-neutral-200 xl:max-w-[520px]">
+            <p className="regular-16 xl:text-left text-gray-30 lg:text-neutral-100 xl:max-w-[520px]">
               {group.description}
             </p>
           </div>
+          </InView>
 
           <Carousel className="lg:mb-5">
             <CarouselContent>
@@ -112,7 +122,7 @@ const CampCarousel = () => {
                   <div className="hide-scrollbar flex h-[340px] w-full items-start justify-start gap-8 overflow-x-auto lg:h-[400px] xl:h-[640px]">
                     <CampSite backgroundImage={slide.url} />
                   </div>
-
+                  
                   <div className={`${group.titleLeft ? 'flexEnd':'flexStart'} mt-10 px-6 lg:${index % 2 === 0 ? "-mt-60 lg:mr-6" : "-mt-60 lg:ml-6"}`}>
                     <div className="bg-green-50/75 hover:bg-green-50 duration-300 p-8 lg:max-w-[500px] xl:max-w-[734px] xl:rounded-5xl xl:px-16 xl:py-20 relative w-full overflow-hidden rounded-3xl">
                       <h2 className="regular-24 md:regular-32 2xl:regular-64 capitalize text-white">
