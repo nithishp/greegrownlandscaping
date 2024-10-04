@@ -97,7 +97,7 @@ const HamburgerButton = ({ active, setActive }) => {
         animate={active ? "open" : "closed"}
         variants={UNDERLAY_VARIANTS}
         style={{ top: 16, right: 16 }}
-        className="fixed z-10 rounded-xl bg-gradient-to-br from-green-600 to-green-500 shadow-lg shadow-violet-800/20"
+        className="fixed z-30 rounded-xl bg-gradient-to-br from-green-600 to-green-500 shadow-lg shadow-violet-800/20"
       />
 
       <motion.button
