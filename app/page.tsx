@@ -7,11 +7,13 @@ import Services from "@/components/Services";
 import PreviousProjects from "@/components/PreviousProjects";
 import VerticalSlideFeatures from "@/components/VerticalSlideFeature";
 import CampCarousel from "@/components/CampCarousel";
+import Hero1 from "@/components/Hero1";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
+      <Hero1/>
       <Camp />
       <Guide />
       <CampCarousel/>
