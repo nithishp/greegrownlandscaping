@@ -250,22 +250,99 @@ export async function getAllBlogs() {
   }
 }
 
-export async function createBlog(){
+// ============================== CREATE BLOG POST
+export async function createBlog(blog) {
   try {
-    const newBlog = await databases.createDocument(
+    console.log(blog, "Creating Blog Post");
+
+    // Upload the image file to Appwrite storage
+    const uploadedImage = await uploadBlogFile(blog.image);
+    console.log(uploadedImage, "Uploaded Image");
+    if (!uploadedImage) {
+      throw new Error("Image upload failed.");
+    }
+
+    // Generate the preview URL of the uploaded image
+    const imageUrl = getBlogFilePreview(uploadedImage.$id);
+    console.log(imageUrl, "Image URL");
+    if (!imageUrl) {
+      await deleteFile(uploadedImage.$id);
+      throw new Error("Failed to generate image preview URL.");
+    }
+
+    // Create a new blog post with title, description, content, and image URL
+    const newBlogPost = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.BlogId,
       ID.unique(),
       {
-        title: "My First Blog",
-        image: "https://via.placeholder.com/150",
-        content: "This is my first blog post. I am so excited to share my thoughts with you.",
-        $createdAt: Math.floor(Date.now() / 1000),
+        title: blog.title,
+        description: blog.description,
+        content: blog.content,
+        image: imageUrl,
       }
     );
-    return newBlog;
+
+    if (!newBlogPost) {
+      await deleteFile(uploadedImage.$id); // Cleanup if blog creation fails
+      throw new Error("Failed to create the blog post.");
+    }
+
+    return { success: true, newBlogPost };
   } catch (error) {
-    console.error("Error creating blog:", error);
+    console.error("Error creating blog post:", error);
+    return { success: false, message: error.message };
+  }
+}
+
+// ============================== UPLOAD FILE
+export async function uploadBlogFile(file) {
+  try {
+    // Upload the file using Appwrite Storage
+    const uploadedFile = await storage.createFile(
+      appwriteConfig.storageId,
+      ID.unique(),
+      file
+    );
+
+    return uploadedFile;
+  } catch (error) {
+    console.error("Error uploading file:", error);
     return null;
   }
+}
+
+// ============================== GET FILE PREVIEW URL
+export function getBlogFilePreview(fileId) {
+  try {
+    // Get the preview URL of the uploaded image
+    const fileUrl = storage.getFilePreview(
+      appwriteConfig.storageId,
+      fileId,
+      2000, // Image width
+      2000, // Image height
+      "top", // Focus on top for preview
+      100 // Quality percentage
+    );
+
+    if (!fileUrl) {
+      throw new Error("Failed to get image preview URL.");
+    }
+
+    return fileUrl;
+  } catch (error) {
+    console.error("Error getting image preview URL:", error);
+    return null;
+  }
+}
+
+
+
+
+export async function getBlogPostById(blogId) {
+  return databases.getDocument(
+    appwriteConfig.databaseId,
+    appwriteConfig.BlogId,
+    blogId
+  );
 }

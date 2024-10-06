@@ -1,5 +1,7 @@
 "use client";
 import { createPost } from "@/services/GlobalApi";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
@@ -78,6 +80,10 @@ const Page = () => {
   return (
     <section className="relative flex flex-wrap lg:h-screen lg:items-center">
       <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+        <Link href='/dashboard' className="flex flex-row items-center gap-4 absolute top-10 duration-200 hover:bg-green-50 hover:text-white  p-3 rounded-xl">
+          <ArrowLeft />
+          <h2>Dashboard</h2>
+        </Link>
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl">Upload Project</h1>
         </div>
@@ -129,7 +135,7 @@ const Page = () => {
 
           <button
             type="submit"
-            className="inline-flex justify-center rounded-md border border-transparent bg-[#30af5b] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="inline-flex justify-center rounded-md border border-transparent bg-[#30af5b] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             disabled={uploading}
           >
             {uploading ? "Uploading..." : "Submit"}

@@ -143,6 +143,10 @@ const LINKS = [
     href: "/projects",
   },
   {
+    title: "Blogs",
+    href: "/blogs",
+  },
+  {
     title: "Contact",
     href: "/#getapp",
   },
