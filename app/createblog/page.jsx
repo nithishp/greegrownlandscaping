@@ -12,11 +12,31 @@ import {
 } from "@/components/ui/card";
 
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Label } from "@/components/ui/label";
 
-export const description =
-  "A product edit page. The product edit page has a form to edit the product details, stock, product category, product status, and product images. The product edit page has a sidebar navigation and a main content area. The main content area has a form to edit the product details, stock, product category, product status, and product images. The sidebar navigation has links to product details, stock, product category, product status, and product images.";
 
 const page = () => {
+  const [title,setTitle] = useState("");
+  const [description,setDescription] = useState("");
+  const [content,setContent] = useState("");
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image'],
+      ['clean']
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ]
+
   return (
     <div className="lg:px-20 mt-10 lg:mt-20">
       <div>
@@ -31,7 +51,7 @@ const page = () => {
         </CardHeader>
         <CardContent>
           <form>
-            <Input placeholder="Enter title here..." />
+            <Input placeholder="Enter title here..." value={title} onChange={e=>setTitle(e.target.value)} />
           </form>
         </CardContent>
         {/* <CardFooter className="border-t px-6 py-4">
@@ -47,17 +67,30 @@ const page = () => {
         </CardHeader>
         <CardContent>
           <form>
-            <Input placeholder="Enter description here..." />
+            <Input placeholder="Enter description here..." value={description} onChange={e=>setDescription(e.target.value)} />
           </form>
         </CardContent>
       </Card>
+      <Card className="my-3">
+        <CardHeader>
+          <CardTitle>Upload Image</CardTitle>
+          <CardDescription>
+            Upload an image for your blog post.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+
+      <Input id="picture" type="file" />
+        </CardContent>
+      </Card>
+    
       <Card className="my-3">
         <CardHeader>
           <CardTitle>Content</CardTitle>
           <CardDescription>Write your blog post here.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ReactQuill />
+          <ReactQuill value={content} modules={modules} formats={formats} onChange={newValue =>setContent(newValue)}  />
         </CardContent>
         <CardFooter className="border-t px-6 py-4">
           <Button>Save</Button>

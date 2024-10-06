@@ -6,6 +6,7 @@ export const appwriteConfig = {
   databaseId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
   storageId: process.env.NEXT_PUBLIC_APPWRITE_STORAGE_ID,
   collectionId: process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID,
+  BlogId: process.env.NEXT_PUBLIC_APPWRITE_BLOG_COLLECTION_ID,
 };
 
 
@@ -231,5 +232,40 @@ export async function updateProject(projectId, updatedPost) {
   } catch (error) {
     console.error("Error updating project:", error);
     return { success: false, message: error.message };
+  }
+}
+
+export async function getAllBlogs() {
+  try {
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.BlogId
+    );
+
+    if (!posts) throw Error;
+    console.log(posts)
+    return posts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createBlog(){
+  try {
+    const newBlog = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.BlogId,
+      ID.unique(),
+      {
+        title: "My First Blog",
+        image: "https://via.placeholder.com/150",
+        content: "This is my first blog post. I am so excited to share my thoughts with you.",
+        $createdAt: Math.floor(Date.now() / 1000),
+      }
+    );
+    return newBlog;
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    return null;
   }
 }
