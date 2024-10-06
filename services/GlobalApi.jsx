@@ -380,7 +380,7 @@ export async function updateBlog(blogId, updatedBlog) {
       {
         title: updatedBlog.title,
         image: fileUrl,
-        excerpt: updatedBlog.description, // Short description
+        description: updatedBlog.description, // Short description
         content: updatedBlog.content, // Full blog content
       }
     );
@@ -389,5 +389,50 @@ export async function updateBlog(blogId, updatedBlog) {
   } catch (error) {
     console.error("Error updating blog:", error);
     return { success: false, message: error.message };
+  }
+}
+
+
+export async function deleteBlogById(blogId, imageUrl) {
+  try {
+    // Delete the document (post)
+    const result = await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.BlogId,
+      blogId
+    );
+    console.log("Post deleted", result);
+
+    // Extract file ID from image URL
+    const fileId = extractFileIdFromUrl(imageUrl);
+
+    if (fileId) {
+      // Delete the image from storage
+      const deleteFileResult = await storage.deleteFile(
+        appwriteConfig.storageId, // Make sure this is the correct bucket ID
+        fileId
+      );
+      console.log("Image deleted", deleteFileResult);
+    } else {
+      console.log("No valid file ID found in the image URL.");
+    }
+  } catch (error) {
+    console.log("Error deleting post or image:", error);
+  }
+}
+export async function getLimitBlogs() {
+  try {
+    // Passing the limit as an option directly to listDocuments
+    const posts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.BlogId,
+      [Query.limit(3)]
+    );
+
+    if (!posts) throw new Error("No posts found");
+    console.log(posts);
+    return posts;
+  } catch (error) {
+    console.error("Error fetching limited posts:", error);
   }
 }

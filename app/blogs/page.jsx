@@ -1,5 +1,6 @@
 "use client";
 import { getAllBlogs } from "@/services/GlobalApi";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -30,15 +31,22 @@ const page = () => {
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <header>
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Blogs</h2>
+        <header className="mb-5">
+          <div className="relative">
+            <Image
+              src="/camp.svg"
+              alt="camp"
+              width={50}
+              height={50}
+              className="absolute left-[-5px] top-[-28px] w-10 lg:w-[50px]"
+            />
+            <h2 className="bold-40 lg:bold-64">Our Blogs</h2>
+          </div>
 
-          <p className="mt-4 max-w-md text-gray-500">
-            Read our latest blogs to stay updated with the latest trends and
-            designs to upgrade your lawn to next level.
+          <p className="mt-4 regular-18 max-w-md text-gray-30">
+            Want to know more about gardern landscaping and designs? Read our blog to know more!!
           </p>
         </header>
-
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {loading && <p>Loading...</p>}
           {blogs.map((blog, index) => (
@@ -50,7 +58,7 @@ const page = () => {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
-                <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 h-full pt-32 sm:pt-48 lg:pt-64">
+                <div className="relative bg-gradient-to-t from-gray-900/50   to-gray-900/25 h-full pt-32 sm:pt-48 lg:pt-64">
                   <div className="p-4 sm:p-6">
                     <time className="block text-xs text-white/90">
                       {" "}

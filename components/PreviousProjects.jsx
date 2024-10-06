@@ -13,6 +13,7 @@ import ProjectModal from "./ProjectModal";
 import { Button } from "./ui/button";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 const PreviousProjects = () => {
@@ -48,14 +49,18 @@ const Skeleton = ({count}) => {
   return (
     <div>
       <section className="my-10">
-        <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-          <div>
-            <h2 className="bold-40 lg:bold-64 text-center">
-              Previous Projects
-            </h2>
-            <p className="max-w-3xl mx-auto  text-xl text-center uppercase regular-18 -mt-1 mb-3 text-green-50 ">
-              What we offer to our clients
+        <div className="container max-w-xl p-6 py-12 mx-auto  lg:px-8 lg:max-w-7xl">
+          <div className=" max-container w-full pb-10">
+            <Image src="/camp.svg" alt="camp" width={50} height={50} />
+            <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
+              our experience speaks
             </p>
+            <div className="flex flex-col">
+              <h2 className="bold-40 lg:bold-64 ">Previous Projects</h2>
+              <p className="regular-16 xl:text-left text-gray-30 xl:max-w-[520px]">
+                We have worked on some amazing projects. Take a look at some of our previous projects.
+              </p>
+            </div>
           </div>
           {/* Error message */}
           {error && <div className="text-red-500 mb-4">{error}</div>}
@@ -76,7 +81,10 @@ const Skeleton = ({count}) => {
                 projects.map((project) => (
                   <Dialog>
                     <DialogTrigger asChild>
-                      <li key={project.$id} className="cursor-pointer hover:scale-105 duration-300">
+                      <li
+                        key={project.$id}
+                        className="cursor-pointer hover:scale-105 duration-300"
+                      >
                         <div
                           style={{
                             backgroundImage: `url(${project.image})`,

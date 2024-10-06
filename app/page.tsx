@@ -8,6 +8,7 @@ import PreviousProjects from "@/components/PreviousProjects";
 import VerticalSlideFeatures from "@/components/VerticalSlideFeature";
 import CampCarousel from "@/components/CampCarousel";
 import Hero1 from "@/components/Hero1";
+import BlogSection from "@/components/BlogSection";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       {/* <Services /> */}
       {/* <VerticalSlideFeatures /> */}
       <PreviousProjects />
+      <BlogSection/>
 
       {/* <Features /> */}
       <GetApp />

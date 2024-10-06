@@ -101,7 +101,7 @@ const EditBlogPage = ({ params }) => {
       // Update the blog with new title, description, content, and image
       const response = await updateBlog(blogId, {
         title: form.title,
-        excerpt: form.description, // Assuming backend expects 'excerpt'
+        description: form.description, // Assuming backend expects 'excerpt'
         content: form.content, // Blog content field
         image: form.image, // Pass the new image file
         previousImageUrl: form.previousImageUrl, // Pass current image URL for deletion if needed
