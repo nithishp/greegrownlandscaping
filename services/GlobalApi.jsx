@@ -135,11 +135,6 @@ export function getFilePreview(fileId) {
   }
 }
 
-const extractFileIdFromUrl = (url) => {
-  const regex = /files\/([a-zA-Z0-9]+)\//;
-  const match = url.match(regex);
-  return match ? match[1] : null;
-};
 
 export async function deletePostById(projectId, imageUrl) {
   try {
@@ -191,6 +186,12 @@ export async function deleteFile(fileId) {
     throw new Error("Failed to delete file");
   }
 }
+
+const extractFileIdFromUrl = (url) => {
+  const regex = /files\/([a-zA-Z0-9]+)\//;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+};
 // Update existing project
 export async function updateProject(projectId, updatedPost) {
   try {
@@ -345,4 +346,48 @@ export async function getBlogPostById(blogId) {
     appwriteConfig.BlogId,
     blogId
   );
+}
+
+export async function updateBlog(blogId, updatedBlog) {
+  try {
+    let fileUrl = updatedBlog.image; // Assume the image URL is provided initially
+
+    // If a new image is provided as a File, upload it
+    if (updatedBlog.image instanceof File) {
+      // Upload the new image
+      const uploadedFile = await uploadBlogFile(updatedBlog.image);
+      if (!uploadedFile) {
+        throw new Error("File upload failed.");
+      }
+
+      // Get the URL for the new uploaded image
+      fileUrl = getBlogFilePreview(uploadedFile.$id);
+
+      // Delete the old image if an image URL was previously provided
+      if (updatedBlog.previousImageUrl) {
+        const oldFileId = extractFileIdFromUrl(updatedBlog.previousImageUrl);
+        if (oldFileId) {
+          await deleteFile(oldFileId); // Delete the old image from Appwrite storage
+        }
+      }
+    }
+
+    // Update the document with the new title, description, content, and image URL
+    const updatedBlogData = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.BlogId,
+      blogId,
+      {
+        title: updatedBlog.title,
+        image: fileUrl,
+        excerpt: updatedBlog.description, // Short description
+        content: updatedBlog.content, // Full blog content
+      }
+    );
+
+    return { success: true, updatedBlogData };
+  } catch (error) {
+    console.error("Error updating blog:", error);
+    return { success: false, message: error.message };
+  }
 }

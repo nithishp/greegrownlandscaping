@@ -43,6 +43,7 @@ const BlogPage = ({ params }) => {
         Created at: {new Date(blog?.$createdAt).toLocaleDateString()}
       </div>
       <div
+      className="prose"
         dangerouslySetInnerHTML={{ __html: blog?.content }}
         style={{ marginTop: "20px" }}
       />
