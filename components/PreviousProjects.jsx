@@ -37,7 +37,7 @@ const PreviousProjects = () => {
   };
 const Skeleton = ({count}) => {
   return (
-    <div className={`animate-pulse bg-gray-300 rounded-lg h-64 w-full delay-${count}00`}></div>
+    <div className={`animate-pulse bg-gray-300 rounded-lg h-64 w-full delay-${count}000`}></div>
   );
 };
   // Fetch projects on component mount
@@ -76,13 +76,13 @@ const Skeleton = ({count}) => {
                 projects.map((project) => (
                   <Dialog>
                     <DialogTrigger asChild>
-                      <li key={project.$id} className="cursor-pointer">
+                      <li key={project.$id} className="cursor-pointer hover:scale-105 duration-300">
                         <div
                           style={{
                             backgroundImage: `url(${project.image})`,
                             backgroundPosition: "center",
                           }}
-                          className="outline-card flex aspect-square w-full flex-col justify-end overflow-hidden rounded-lg bg-neutral-400 shadow-xl shadow-neutral-900/30 transition-[background-size] bg-no-repeat bg-cover duration-500"
+                          className="outline-card flex aspect-square w-full flex-col justify-end overflow-hidden rounded-lg bg-neutral-400  shadow-xl shadow-neutral-900/30 transition-[background-size] bg-no-repeat bg-cover duration-500"
                         >
                           <div className="pointer-events-none flex flex-col items-start justify-between bg-gradient-to-t from-black to-black/0 p-6 pt-8 text-xl font-medium text-white md:text-2xl">
                             <h3 className="text-left bold-20 lg:bold-32">
