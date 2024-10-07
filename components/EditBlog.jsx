@@ -9,8 +9,8 @@ import { Button } from "./ui/button";
 import { toast } from "sonner";
 import SkeletonLoader from "./SkeletonLoader"; // Import SkeletonLoader
 import { getBlogPostById } from "@/services/GlobalApi";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 
 const EditBlog = ({ blogId }) => {
   const router = useRouter(); // Initialize router
@@ -146,13 +146,13 @@ const EditBlog = ({ blogId }) => {
           </div>
           <div className="grid w-full my-3 gap-1.5">
             <Label htmlFor="description">Update Description</Label>
-            <ReactQuill
+            {/* <ReactQuill
 
               value={form.content}
               modules={modules}
               formats={formats}
               onChange={e=>setForm({...form,content:e})}
-            />
+            /> */}
           </div>
 
           <div className="grid w-full my-3 gap-1.5">

@@ -1,6 +1,6 @@
 "use client";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -136,12 +136,12 @@ const CreateBlogPage = () => {
           <CardDescription>Write your blog post here.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ReactQuill
+          {/* <ReactQuill
             value={content}
             modules={modules}
             formats={formats}
             onChange={(newValue) => setContent(newValue)}
-          />
+          /> */}
         </CardContent>
         <CardFooter className="border-t px-6 py-4">
           <Button onClick={handleSubmit} disabled={loading}>
