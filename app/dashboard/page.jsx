@@ -22,6 +22,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import EditProject from "@/components/EditProject";
 import EditBlog from "@/components/EditBlog";
 import {
@@ -114,10 +120,20 @@ const Dashboard = () => {
             <div className="mt-10">
               <h1 className="bold-32 lg:bold-48">Dashboard</h1>
             </div>
-            <TabsList>
-              <TabsTrigger value="project">Projects</TabsTrigger>
-              <TabsTrigger value="blog">Blogs</TabsTrigger>
-            </TabsList>
+            <div className="flex justify-between">
+              <TabsList>
+                <TabsTrigger value="project">Projects</TabsTrigger>
+                <TabsTrigger value="blog">Blogs</TabsTrigger>
+              </TabsList>
+              <div className="px-4">
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
+            </div>
 
             {/* Projects Tab */}
             <TabsContent value="project">

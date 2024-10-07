@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { account } from "@/services/GlobalApi";
+import { useUser } from "@clerk/nextjs";
 export const Example = () => {
   return (
       <Nav />
@@ -13,36 +14,14 @@ export const Example = () => {
 
 const Nav = () => {
   const [active, setActive] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { isSignedIn } = useUser();
 
-  useEffect(() => {
-    // Check if a session exists
-    const checkLoginStatus = async () => {
-      try {
-        await account.get(); // If session exists, this will succeed
-        setIsLoggedIn(true);
-      } catch (error) {
-        console.log('No active session:', error);
-        setIsLoggedIn(false);
-      }
-    };
-
-    checkLoginStatus();
-  }, []);
-  const handleLogout = async () => {
-    try {
-      await account.deleteSession('current'); // Log out the user
-      setIsLoggedIn(false); // Update state
-      console.log('Logged out successfully');
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
-  };
+    
 
   return (
     <>
       <HamburgerButton active={active} setActive={setActive} />
-      <AnimatePresence>{active && <LinksOverlay setActive={setActive} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}</AnimatePresence>
+      <AnimatePresence>{active && <LinksOverlay setActive={setActive} isLoggedIn={isSignedIn} />}</AnimatePresence>
     </>
   );
 };
@@ -50,12 +29,12 @@ const Nav = () => {
 const LinksOverlay = ({ setActive, isLoggedIn, handleLogout }) => {
   return (
     <nav className="fixed right-4 top-4 z-40 h-[calc(100vh_-_32px)] w-[calc(100%_-_32px)] overflow-hidden">
-      <LinksContainer setActive={setActive} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+      <LinksContainer setActive={setActive} isLoggedIn={isLoggedIn} />
     </nav>
   );
 };
 
-const LinksContainer = ({ setActive, isLoggedIn, handleLogout }) => {
+const LinksContainer = ({ setActive, isLoggedIn }) => {
   return (
     <motion.div className="space-y-4 p-12 pl-4 md:pl-20">
       {LINKS.map((l, idx) => (

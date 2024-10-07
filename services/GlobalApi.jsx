@@ -458,3 +458,15 @@ export async function logout() {
     console.error('Error logging out:', error.message);
   }
 }
+
+export async function isLoggedIn() {
+  try {
+    // Check if the user is logged in
+    const response = await account.get();
+    console.log('User is logged in:', response);
+    return response;
+  } catch (error) {
+    console.error('User is not logged in:', error.message);
+    return null;
+  }
+}
