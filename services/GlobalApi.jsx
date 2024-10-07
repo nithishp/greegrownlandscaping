@@ -11,7 +11,7 @@ export const appwriteConfig = {
 
 
 const client = new Client();
-const account = new Account(client);
+export const account = new Account(client);
 const databases = new Databases(client);
 const storage = new Storage(client);
 const avatars = new Avatars(client);
@@ -434,5 +434,27 @@ export async function getLimitBlogs() {
     return posts;
   } catch (error) {
     console.error("Error fetching limited posts:", error);
+  }
+}
+
+
+export async function signIn(email, password) {
+  try {
+    const response = await account.createEmailPasswordSession(email,password) // Wait for the session creation
+    console.log('Login successful:', response); // Handle success (e.g., store session or redirect)
+    return response; // Return the session response (useful for further actions)
+  } catch (error) {
+    console.error('Login failed:', error.message); // Handle error (e.g., incorrect credentials)
+    return error;
+  }
+}
+
+export async function logout() {
+  try {
+    // Delete the current session (logs out the user)
+    await account.deleteSession('current');
+    console.log('User logged out successfully');
+  } catch (error) {
+    console.error('Error logging out:', error.message);
   }
 }
