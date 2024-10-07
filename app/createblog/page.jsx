@@ -1,7 +1,8 @@
 "use client";
 // import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
 import {
   Card,
   CardContent,
@@ -15,7 +16,7 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label"; // Assuming this is where the function is
 import { useRouter } from "next/navigation";
 import { createBlog } from "@/services/GlobalApi";
-
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const CreateBlogPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -136,12 +137,12 @@ const CreateBlogPage = () => {
           <CardDescription>Write your blog post here.</CardDescription>
         </CardHeader>
         <CardContent>
-          {/* <ReactQuill
+          <ReactQuill
             value={content}
             modules={modules}
             formats={formats}
             onChange={(newValue) => setContent(newValue)}
-          /> */}
+          />
         </CardContent>
         <CardFooter className="border-t px-6 py-4">
           <Button onClick={handleSubmit} disabled={loading}>
